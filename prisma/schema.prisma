@@ -21,3 +21,15 @@ model User {
 
   @@map("users")
 }
+
+model Video {
+  id   String @id @default(uuid())
+  name String
+  key  String
+  size Int
+  url  String
+
+  created_at DateTime @default(now())
+
+  @@map("videos")
+}

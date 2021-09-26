@@ -20,7 +20,7 @@ const Login = () => {
     if (email.trim() === '' || password.trim() === '') {
       return store.addNotification({
         title: "Campos Vazios!",
-        message: "preencha o Email e Senha",
+        message: "Preencha o Email e Senha",
         type: "warning",
         insert: "top",
         container: "top-right",
@@ -39,7 +39,7 @@ const Login = () => {
 
       store.addNotification({
         title: "Deu certo!",
-        message: "entrando no sistema",
+        message: "Entrando no sistema",
         type: "success",
         insert: "top",
         container: "top-right",
@@ -56,10 +56,25 @@ const Login = () => {
       }, 2500)
     }).catch((err) => {
       switch (err.message) {
+        case 'Request failed with status code 404':
+          store.addNotification({
+            title: "Usuário não existe!",
+            message: "Crie sua conta primeiro",
+            type: "warning",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+              duration: 3000,
+              onScreen: true
+            }
+          });
+          break
         case 'Request failed with status code 401':
           store.addNotification({
             title: "Dados inválidos!",
-            message: "Email ou Senha incorretos",
+            message: "Email ou senha incorretos",
             type: "warning",
             insert: "top",
             container: "top-right",
@@ -74,7 +89,7 @@ const Login = () => {
         default:
           store.addNotification({
             title: "Algo deu errado!",
-            message: "tente novamente mais tarde",
+            message: "Tente novamente mais tarde",
             type: "danger",
             insert: "top",
             container: "top-right",

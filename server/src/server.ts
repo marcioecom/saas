@@ -20,6 +20,12 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     });
   }
 
+  if (err.message === "User does not exists") {
+    return res.status(404).json({
+      error: err.message,
+    });
+  }
+
   if (err instanceof Error) {
     return res.status(400).json({
       error: err.message,

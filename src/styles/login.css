@@ -1,0 +1,78 @@
+.content {
+  padding-top: 100px;
+}
+
+.container {
+  padding: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-header {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-center {
+  color: #5944e8;
+  text-align: center;
+  margin-left: 5px;
+}
+
+.logo {
+  width: 35px;
+}
+
+.form-container {
+  padding: 20px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  box-shadow: rgba(21, 30, 40, 0.07) 0px 1px 2px 0px, 
+              rgba(21, 30, 40, 0.07) 0px 2px 4px 0px, 
+              rgba(21, 30, 40, 0.07) 0px 4px 8px 0px, 
+              rgba(21, 30, 40, 0.07) 0px 8px 16px 0px, 
+              rgba(21, 30, 40, 0.07) 0px 16px 32px 0px, 
+              rgba(21, 30, 40, 0.07) 0px 32px 64px 0px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.line-content {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.line-content input {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #c4c7ca;
+}
+
+.line-content input:focus {
+  box-shadow: rgba(98, 75, 255, 0.25) 0px 0px 0px 4px;
+  outline: none;
+}
+
+.line-content button {
+  padding: 10px;
+  color: #FFFFFF;
+  font-size: 16px;
+  background-color: #5944e8;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.line-content button:active {
+  box-shadow: rgba(98, 75, 255, 0.25) 0px 0px 0px 4px;
+}
+
+.line-content button:hover {
+  background-color: #5340d9;
+  cursor: pointer;
+}

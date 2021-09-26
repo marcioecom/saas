@@ -4,11 +4,13 @@ import { upload } from "./utils/upload";
 
 import { CreateUserController } from "./modules/createUser/CreateUserController";
 import { CreateVideoController } from "./modules/createVideo/CreateVideoController";
+import { AuthenticateUserController } from "./modules/authUser/AuthenticateUserController";
 
 const router = Router();
 
 const createUserController = new CreateUserController();
 const createVideoController = new CreateVideoController();
+const authenticateUserController = new AuthenticateUserController();
 
 router.get("/", (req, res) => {
   return res.json({
@@ -23,5 +25,7 @@ router.post(
   multer(upload).single("file"),
   createVideoController.handle
 );
+
+router.post("/login", authenticateUserController.handle);
 
 export { router };

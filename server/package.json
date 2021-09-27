@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
+    "prestart": "npx prisma migrate dev",
+    "start": "node dist/server.js",
     "dev": "ts-node src/server.ts"
   },
   "dependencies": {

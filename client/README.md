@@ -1,4 +1,4 @@
 # VClick UI
 - [x] Login Page
-- [] Register Page
-- [] Videos Page
+- [ ] Register Page
+- [ ] Videos Page

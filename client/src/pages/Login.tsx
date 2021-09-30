@@ -1,7 +1,9 @@
-import { useState, FormEvent } from 'react';
-// import { useHistory } from "react-router-dom"
+import { useState, useContext, FormEvent } from 'react';
+import { Link, useHistory } from "react-router-dom"
 import ReactNotification from 'react-notifications-component';
 import createNotification from '../components/Notification';
+import Button from '../components/Button';
+import { AuthContext } from '../contexts/AuthContext';
 import axios from '../services/api';
 
 import logo from '../assets/images/play512.png'
@@ -10,6 +12,7 @@ import 'react-notifications-component/dist/theme.css'
 import '../styles/login.css'
 
 const Login = () => {
+  const { authenticated, handleLogin } = useContext(AuthContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   // const history = useHistory()
@@ -103,11 +106,14 @@ const Login = () => {
             </div>
 
             <div className="line-content">
-              <button
-                type="submit"
-              >
-                Entrar
-              </button>
+              <Button type="submit">
+                Enviar
+              </Button>
+            </div>
+            <div className="line-content">
+              <p>
+                Não tem uma conta? <Link to="/register">Cadastrar</Link>
+              </p>
             </div>
           </form>
         </div>

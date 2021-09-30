@@ -1,7 +1,8 @@
 import { useState, FormEvent } from 'react';
 // import { useHistory } from "react-router-dom"
-import ReactNotification, { store } from 'react-notifications-component';
-import axios from 'axios';
+import ReactNotification from 'react-notifications-component';
+import createNotification from '../components/Notification';
+import axios from '../services/api';
 
 import logo from '../assets/images/play512.png'
 
@@ -11,45 +12,28 @@ import '../styles/login.css'
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const appUrl = process.env.REACT_APP_APP_URL
   // const history = useHistory()
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
 
     if (email.trim() === '' || password.trim() === '') {
-      return store.addNotification({
+      return createNotification({
         title: "Campos Vazios!",
         message: "Preencha o Email e Senha",
         type: "warning",
-        insert: "top",
-        container: "top-right",
-        animationIn: ["animate__animated", "animate__fadeIn"],
-        animationOut: ["animate__animated", "animate__fadeOut"],
-        dismiss: {
-          duration: 3000,
-          onScreen: true
-        }
-      });
+      })
     }
 
-    axios.post(`${appUrl}/login`, { email, password }
+    axios.post('/login', { email, password }
     ).then((res) => {
       localStorage.setItem('token', res.data)
 
-      store.addNotification({
+      createNotification({
         title: "Deu certo!",
         message: "Entrando no sistema",
         type: "success",
-        insert: "top",
-        container: "top-right",
-        animationIn: ["animate__animated", "animate__fadeIn"],
-        animationOut: ["animate__animated", "animate__fadeOut"],
-        dismiss: {
-          duration: 2000,
-          onScreen: true
-        }
-      });
+      })
 
       setTimeout(() => {
         // history.push('/videos')
@@ -57,49 +41,25 @@ const Login = () => {
     }).catch((err) => {
       switch (err.message) {
         case 'Request failed with status code 404':
-          store.addNotification({
+          createNotification({
             title: "Usuário não existe!",
             message: "Crie sua conta primeiro",
-            type: "warning",
-            insert: "top",
-            container: "top-right",
-            animationIn: ["animate__animated", "animate__fadeIn"],
-            animationOut: ["animate__animated", "animate__fadeOut"],
-            dismiss: {
-              duration: 3000,
-              onScreen: true
-            }
-          });
+            type: "warning"
+          })
           break
         case 'Request failed with status code 401':
-          store.addNotification({
+          createNotification({
             title: "Dados inválidos!",
             message: "Email ou senha incorretos",
             type: "warning",
-            insert: "top",
-            container: "top-right",
-            animationIn: ["animate__animated", "animate__fadeIn"],
-            animationOut: ["animate__animated", "animate__fadeOut"],
-            dismiss: {
-              duration: 3000,
-              onScreen: true
-            }
-          });
+          })
           break
         default:
-          store.addNotification({
+          createNotification({
             title: "Algo deu errado!",
             message: "Tente novamente mais tarde",
             type: "danger",
-            insert: "top",
-            container: "top-right",
-            animationIn: ["animate__animated", "animate__fadeIn"],
-            animationOut: ["animate__animated", "animate__fadeOut"],
-            dismiss: {
-              duration: 3000,
-              onScreen: true
-            }
-          });
+          })
           break;
       }
     })

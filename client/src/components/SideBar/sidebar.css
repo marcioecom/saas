@@ -1,0 +1,38 @@
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 92vh;
+}
+
+.sidebar-nav {
+  height: 100%;
+  background-color: #252F3F;
+}
+
+.sidebar-line {
+  display: flex;
+  align-items: center;
+
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+.sidebar-line:hover {
+  font-size: 18px;
+}
+
+.sidebar-line svg {
+  margin-right: 5px;
+}
+
+.sidebar-link {
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.sidebar-link #active {
+  background-color: #161E2E;
+}

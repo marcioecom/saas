@@ -1,0 +1,17 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+
+  background-color: #057A55;
+  padding: 0 20px;
+}
+
+.navbar-item {
+  padding: 20px 0;
+}
+
+.navbar-item p {
+  font-size: 18px;
+  margin: 0;
+  color: aliceblue;
+}

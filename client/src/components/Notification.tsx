@@ -16,7 +16,7 @@ function createNotification({ title, message, type }: INotificationParams) {
     animationIn: ["animate__animated", "animate__fadeIn"],
     animationOut: ["animate__animated", "animate__fadeOut"],
     dismiss: {
-      duration: 3000,
+      duration: 2000,
       onScreen: true
     }
   });

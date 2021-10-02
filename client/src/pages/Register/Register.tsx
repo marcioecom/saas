@@ -1,13 +1,18 @@
 import { FormEvent, useState } from 'react';
 import { Link } from "react-router-dom"
-import Button from '../components/Button';
-import api from '../services/api';
+import ReactNotification from "react-notifications-component"
+import { useAuth } from '../../hooks/useAuth';
 
-import logo from '../assets/images/play512.png'
+import Button from '../../components/Button/Button';
+import createNotification from '../../components/Notification';
 
-import "../styles/register.css"
+import logo from '../../assets/images/play512.png'
+
+import "./register.css"
+import api from '../../services/api';
 
 const Register = () => {
+  const { handleLogin } = useAuth()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -15,11 +20,38 @@ const Register = () => {
   function handleSignIn(event: FormEvent) {
     event.preventDefault()
 
-    api.post("/users", { name, email, password })
+    api.post('/users', { name, email, password }
+    ).then(async () => {
+      createNotification({
+        title: "Cadastro feito!",
+        message: "Entrando no sistema",
+        type: "success",
+      })
+
+      await handleLogin({ email, password })
+    }).catch((err) => {
+      switch (err.message) {
+        case 'Request failed with status code 400':
+          createNotification({
+            title: "Usuário já existe!",
+            message: "Tente entrar na sua conta",
+            type: "warning",
+          })
+          break
+        default:
+          createNotification({
+            title: "Algo deu errado!",
+            message: "Tente novamente mais tarde",
+            type: "danger",
+          })
+          break;
+      }
+    })
   }
 
   return (
     <>
+      <ReactNotification />
       <div className="content">
         <div className="container">
           <form

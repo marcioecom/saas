@@ -1,23 +1,22 @@
-import { useState, useContext, FormEvent } from 'react';
-import { Link, useHistory } from "react-router-dom"
+import { useState, FormEvent } from 'react';
+import { Link } from "react-router-dom"
 import ReactNotification from 'react-notifications-component';
-import createNotification from '../components/Notification';
-import Button from '../components/Button';
-import { AuthContext } from '../contexts/AuthContext';
-import axios from '../services/api';
+import { useAuth } from '../../hooks/useAuth';
 
-import logo from '../assets/images/play512.png'
+import createNotification from '../../components/Notification';
+import Button from '../../components/Button/Button';
+
+import logo from '../../assets/images/play512.png'
 
 import 'react-notifications-component/dist/theme.css'
-import '../styles/login.css'
+import './login.css'
 
 const Login = () => {
-  const { authenticated, handleLogin } = useContext(AuthContext)
+  const { handleLogin } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // const history = useHistory()
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
     if (email.trim() === '' || password.trim() === '') {
@@ -28,19 +27,13 @@ const Login = () => {
       })
     }
 
-    axios.post('/login', { email, password }
-    ).then((res) => {
-      localStorage.setItem('token', res.data)
-
+    await handleLogin({ email, password }
+    ).then(() => {
       createNotification({
         title: "Deu certo!",
         message: "Entrando no sistema",
         type: "success",
       })
-
-      setTimeout(() => {
-        // history.push('/videos')
-      }, 2500)
     }).catch((err) => {
       switch (err.message) {
         case 'Request failed with status code 404':

@@ -9,6 +9,7 @@ import Register from "./pages/Register/Register";
 import Videos from "./pages/Videos/Videos";
 
 import loadingGif from "./assets/load.gif"
+import Embeded from "./pages/Embeded/Embeded";
 
 interface ICustomRoute extends RouteProps {
   isPrivate?: boolean;
@@ -43,6 +44,7 @@ function App() {
         <Switch>
           <CustomRoute path="/login" component={Login} />
           <CustomRoute path="/register" component={Register} />
+          <CustomRoute path="/embeded" component={Embeded} />
           <CustomRoute isPrivate path="/videos" component={Videos} />
         </Switch>
       </Router>

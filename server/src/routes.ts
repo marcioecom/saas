@@ -6,18 +6,22 @@ import { CreateUserController } from "./modules/createUser/CreateUserController"
 import { CreateVideoController } from "./modules/createVideo/CreateVideoController";
 import { AuthenticateUserController } from "./modules/authUser/AuthenticateUserController";
 import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
+import { StreamVideoController } from "./modules/streamVideo/StreamVideoController";
 
 const router = Router();
 
 const createUserController = new CreateUserController();
 const createVideoController = new CreateVideoController();
 const authenticateUserController = new AuthenticateUserController();
+const streamVideoController = new StreamVideoController();
 
 router.get("/", (req, res) => {
   return res.json({
     message: "Ok",
   });
 });
+
+router.get("/stream", streamVideoController.handle);
 
 router.post("/users", createUserController.handle);
 

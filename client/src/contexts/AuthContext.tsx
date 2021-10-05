@@ -1,10 +1,16 @@
-import { createContext, useState, useEffect, ReactNode } from 'react';
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  ReactNode
+} from 'react';
 import api from "../services/api"
 import history from "../services/history"
 
 type AuthContextType = {
   loading: boolean;
   authenticated: boolean;
+  setAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
   handleLogin: ({ email, password }: UserRequest) => Promise<void>
 }
 
@@ -47,7 +53,9 @@ function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider value={{ loading, authenticated, handleLogin }}>
+    <AuthContext.Provider value={{
+      loading, authenticated, setAuthenticated, handleLogin
+    }}>
       {children}
     </ AuthContext.Provider>
   )

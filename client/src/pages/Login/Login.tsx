@@ -100,7 +100,7 @@ const Login = () => {
 
             <div className="line-content">
               <Button type="submit">
-                Enviar
+                Entrar
               </Button>
             </div>
             <div className="line-content">

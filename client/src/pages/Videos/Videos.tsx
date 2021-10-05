@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MdFileUpload } from "react-icons/md"
 import NavBar from '../../components/NavBar/NavBar';
 import SideBar from '../../components/SideBar/SideBar';
+import { useAuth } from '../../hooks/useAuth';
 import api from '../../services/api';
 
 import "./videos.css"
@@ -13,15 +14,22 @@ interface IVideo {
 }
 
 const Videos = () => {
+  const { setAuthenticated } = useAuth()
   const [videos, setVideos] = useState([])
 
   useEffect(() => {
     (async () => {
-      const { data } = await api.get("/videos")
+      try {
+        const { data } = await api.get("/videos")
 
-      setVideos(data)
+        setVideos(data)
+      } catch (error: any) {
+        if (error.message === "Request failed with status code 401") {
+          setAuthenticated(false)
+        }
+      }
     })()
-  }, [])
+  }, [setAuthenticated])
 
   return (
     <>

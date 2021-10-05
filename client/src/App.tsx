@@ -8,6 +8,8 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Videos from "./pages/Videos/Videos";
 
+import loadingGif from "./assets/load.gif"
+
 interface ICustomRoute extends RouteProps {
   isPrivate?: boolean;
 }
@@ -16,7 +18,15 @@ function CustomRoute({ isPrivate, ...rest }: ICustomRoute) {
   const { loading, authenticated } = useAuth()
 
   if (loading) {
-    return <h1>Loading...</h1>
+    return (
+      <div className="img-center">
+        <img
+          src={loadingGif}
+          className="img-center"
+          alt="loading gif"
+        />
+      </div>
+    )
   }
 
   if (isPrivate && !authenticated) {

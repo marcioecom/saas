@@ -12,5 +12,10 @@
       "./src/@types",
       "./node_modules/@types"
     ]
-  }
+  },
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "jest.config.ts"
+  ]
 }

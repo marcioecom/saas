@@ -2,15 +2,14 @@ import { Router } from "express";
 import multer from "multer";
 import { upload } from "./utils/upload";
 
-import { CreateUserController } from "./modules/createUser/CreateUserController";
+import { createUserFactory } from "./modules/accounts/useCases/createUser/CreateUserFactory";
 import { CreateVideoController } from "./modules/createVideo/CreateVideoController";
-import { AuthenticateUserController } from "./modules/authUser/AuthenticateUserController";
+import { AuthenticateUserController } from "./modules/accounts/useCases/authUser/AuthenticateUserController";
 import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
 import { StreamVideoController } from "./modules/streamVideo/StreamVideoController";
 
 const router = Router();
 
-const createUserController = new CreateUserController();
 const createVideoController = new CreateVideoController();
 const authenticateUserController = new AuthenticateUserController();
 const streamVideoController = new StreamVideoController();
@@ -23,7 +22,9 @@ router.get("/", (req, res) => {
 
 router.get("/stream", streamVideoController.handle);
 
-router.post("/users", createUserController.handle);
+router.post("/users", (req, res) => {
+  createUserFactory().handle(req, res);
+});
 
 router.get("/videos", ensureAuthenticated, (req, res) => {
   return res.json([

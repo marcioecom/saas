@@ -3,5 +3,5 @@ A VSL(video sales letter) video Player
 
 - [x] Create User
 - [x] Upload Video
-- [ ] Provide Video
+- [x] Provide Video
 - [ ] Track Video

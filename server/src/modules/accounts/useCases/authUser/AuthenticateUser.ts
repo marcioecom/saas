@@ -1,6 +1,6 @@
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
-import { prisma } from "../../database/prisma";
+import { IUsersRepository } from "../../repositories/IUsersRepository";
 
 interface IAuthRequest {
   email: string;
@@ -8,12 +8,11 @@ interface IAuthRequest {
 }
 
 class AuthenticateUser {
+  // eslint-disable-next-line no-unused-vars
+  constructor(private usersRepository: IUsersRepository) {}
+
   async execute({ email, password }: IAuthRequest) {
-    const user = await prisma.user.findFirst({
-      where: {
-        email,
-      },
-    });
+    const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
       throw new Error("User does not exists");

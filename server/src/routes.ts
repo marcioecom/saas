@@ -2,16 +2,17 @@ import { Router } from "express";
 import multer from "multer";
 import { upload } from "./utils/upload";
 
-import { createUserFactory } from "./modules/accounts/useCases/createUser/CreateUserFactory";
-import { CreateVideoController } from "./modules/createVideo/CreateVideoController";
-import { AuthenticateUserController } from "./modules/accounts/useCases/authUser/AuthenticateUserController";
 import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
+
+import { createUserFactory } from "./modules/accounts/useCases/createUser/CreateUserFactory";
+import { AuthenticateUserFactory } from "./modules/accounts/useCases/authUser/AuthenticateUserFactory";
+
+import { CreateVideoController } from "./modules/createVideo/CreateVideoController";
 import { StreamVideoController } from "./modules/streamVideo/StreamVideoController";
 
 const router = Router();
 
 const createVideoController = new CreateVideoController();
-const authenticateUserController = new AuthenticateUserController();
 const streamVideoController = new StreamVideoController();
 
 router.get("/", (req, res) => {
@@ -52,6 +53,8 @@ router.post(
   createVideoController.handle
 );
 
-router.post("/login", authenticateUserController.handle);
+router.post("/login", (req, res) => {
+  AuthenticateUserFactory().handle(req, res);
+});
 
 export { router };

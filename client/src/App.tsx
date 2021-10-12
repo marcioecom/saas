@@ -10,6 +10,7 @@ import Videos from "./pages/Videos/Videos";
 
 import loadingGif from "./assets/load.gif"
 import Embeded from "./pages/Embeded/Embeded";
+import SideBar from "./components/SideBar/SideBar";
 
 interface ICustomRoute extends RouteProps {
   isPrivate?: boolean;
@@ -45,7 +46,10 @@ function App() {
           <CustomRoute path="/login" component={Login} />
           <CustomRoute path="/register" component={Register} />
           <CustomRoute path="/embeded" component={Embeded} />
-          <CustomRoute isPrivate path="/videos" component={Videos} />
+          <div style={{ display: "flex" }}>
+            <SideBar />
+            <CustomRoute isPrivate path="/videos" component={Videos} />
+          </div>
         </Switch>
       </Router>
     </AuthProvider>

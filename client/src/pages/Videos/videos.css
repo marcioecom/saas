@@ -47,3 +47,9 @@
 .custom-file-upload svg {
   margin-right: 10px;
 }
+
+@media (max-width: 600px) {
+  .videos-content {
+    max-width: 100%;
+  }
+}

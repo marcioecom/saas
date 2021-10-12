@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { MdFileUpload } from "react-icons/md"
-import NavBar from '../../components/NavBar/NavBar';
-import SideBar from '../../components/SideBar/SideBar';
 import { useAuth } from '../../hooks/useAuth';
 import api from '../../services/api';
 
@@ -33,29 +31,25 @@ const Videos = () => {
 
   return (
     <>
-      <NavBar />
-      <div className="page">
-        <SideBar />
-        <div className="videos-content">
-          <h2>Videos</h2>
-          <div className="videos-main">
-            <p className="text-center-upload">Faça o envio dos seus videos</p>
-            <div className="upload-container">
-              <label className="custom-file-upload">
-                <input type="file" name="file" />
-                <MdFileUpload color="white" size={20} />
-                Escolher arquivo
-              </label>
-            </div>
-            <div className="files-preview">
-              <ul>
-                {videos.map((video: IVideo) => (
-                  <li key={video.id}>
-                    {video.name} (video.website)
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <div className="videos-content">
+        <h2>Videos</h2>
+        <div className="videos-main">
+          <p className="text-center-upload">Faça o envio dos seus videos</p>
+          <div className="upload-container">
+            <label className="custom-file-upload">
+              <input type="file" name="file" />
+              <MdFileUpload color="white" size={20} />
+              Escolher arquivo
+            </label>
+          </div>
+          <div className="files-preview">
+            <ul>
+              {videos.map((video: IVideo) => (
+                <li key={video.id}>
+                  {video.name} (video.website)
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

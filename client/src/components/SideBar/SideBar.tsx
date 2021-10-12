@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { MdDashboard, MdOndemandVideo, MdSmsFailed } from "react-icons/md"
 
+import logo from "../../assets/images/play512.png"
 import "./sidebar.css"
 
 const SideBar = () => {
@@ -24,6 +25,12 @@ const SideBar = () => {
   return (
     <>
       <div className="sidebar-container">
+        <header className="side-header">
+          <div className="sidebar-title">
+            <img src={logo} alt="VClick Logo" />
+            <p>VClick</p>
+          </div>
+        </header>
         <nav className="sidebar-nav">
           {pages.map((val, key) => (
             <Link

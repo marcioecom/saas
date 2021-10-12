@@ -6,14 +6,10 @@ import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
 
 import { createUserFactory } from "./modules/accounts/useCases/createUser/CreateUserFactory";
 import { AuthenticateUserFactory } from "./modules/accounts/useCases/authUser/AuthenticateUserFactory";
-
-import { CreateVideoController } from "./modules/createVideo/CreateVideoController";
-import { StreamVideoController } from "./modules/streamVideo/StreamVideoController";
+import { CreateVideoFactory } from "./modules/stream/useCases/createVideo/CreateVideoFactory";
+import { StreamVideoFactory } from "./modules/stream/useCases/streamVideo/StreamVideoFactory";
 
 const router = Router();
-
-const createVideoController = new CreateVideoController();
-const streamVideoController = new StreamVideoController();
 
 router.get("/", (req, res) => {
   return res.json({
@@ -21,10 +17,12 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/stream", streamVideoController.handle);
-
 router.post("/users", (req, res) => {
   createUserFactory().handle(req, res);
+});
+
+router.post("/login", (req, res) => {
+  AuthenticateUserFactory().handle(req, res);
 });
 
 router.get("/videos", ensureAuthenticated, (req, res) => {
@@ -47,14 +45,12 @@ router.get("/videos", ensureAuthenticated, (req, res) => {
   ]);
 });
 
-router.post(
-  "/videos",
-  multer(upload).single("file"),
-  createVideoController.handle
-);
+router.post("/videos", multer(upload).single("file"), (req, res) => {
+  CreateVideoFactory().handle(req, res);
+});
 
-router.post("/login", (req, res) => {
-  AuthenticateUserFactory().handle(req, res);
+router.get("/stream", (req, res) => {
+  StreamVideoFactory().handle(req, res);
 });
 
 export { router };

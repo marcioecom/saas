@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Request } from "express";
-import multer, { FileFilterCallback, Options } from "multer";
+import multer, { FileFilterCallback, Options, StorageEngine } from "multer";
 import path from "path";
 import crypto from "crypto";
 import aws from "aws-sdk";
@@ -37,9 +37,11 @@ const s3 = multerS3({
   },
 });
 
+let type;
+
 const upload: Options = {
   dest: path.resolve(__dirname, "..", "tmp", "uploads"),
-  storage: local,
+  storage: process.env.STORAGE_TYPE === "s3" ? (type = s3) : (type = local),
   fileFilter: (
     req: Request,
     // eslint-disable-next-line no-undef

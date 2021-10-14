@@ -17,7 +17,7 @@
 }
 
 .sidebar-title img {
-  width: 2rem;
+  width: 1.7rem;
   margin-right: 5px;
 }
 
@@ -41,7 +41,7 @@
   border: 1px solid transparent;
   border-radius: 5px;
 
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .sidebar-line:hover {

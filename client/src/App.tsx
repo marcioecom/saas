@@ -38,6 +38,13 @@ function CustomRoute({ isPrivate, ...rest }: ICustomRoute) {
   return <Route {...rest} />
 }
 
+const Platform: React.FunctionComponent = ({ children }) => {
+  return (
+    <div style={{ display: "flex" }}>
+      { children }
+    </div>)
+}
+
 function App() {
   return (
     <AuthProvider>
@@ -46,10 +53,10 @@ function App() {
           <CustomRoute path="/login" component={Login} />
           <CustomRoute path="/register" component={Register} />
           <CustomRoute path="/embeded" component={Embeded} />
-          <div style={{ display: "flex" }}>
+          <Platform>
             <SideBar />
             <CustomRoute isPrivate path="/videos" component={Videos} />
-          </div>
+          </Platform>
         </Switch>
       </Router>
     </AuthProvider>

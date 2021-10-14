@@ -22,6 +22,7 @@ const SideBar = () => {
       link: "/a"
     }
   ]
+
   return (
     <>
       <div className="sidebar-container">
@@ -32,21 +33,15 @@ const SideBar = () => {
           </div>
         </header>
         <nav className="sidebar-nav">
-          {pages.map((val, key) => (
+          {pages.map((page, key) => (
             <Link
               key={key}
               className="sidebar-link"
-              to={val.link}
+              to={page.link}
             >
-              <div
-                className="sidebar-line"
-                id={
-                  window.location.pathname === val.link ?
-                    "active" : ""
-                }
-              >
-                {val.icon}
-                {val.name}
+              <div className="sidebar-line">
+                {page.icon}
+                {page.name}
               </div>
             </Link>
           ))}

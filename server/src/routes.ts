@@ -49,7 +49,7 @@ router.post("/videos", multer(upload).single("file"), (req, res) => {
   CreateVideoFactory().handle(req, res);
 });
 
-router.get("/stream", (req, res) => {
+router.get("/stream/:id", (req, res) => {
   StreamVideoFactory().handle(req, res);
 });
 

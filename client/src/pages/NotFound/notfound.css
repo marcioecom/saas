@@ -1,0 +1,9 @@
+.not-found-wrapper {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.not-found-img {
+  max-width: 22rem;
+}

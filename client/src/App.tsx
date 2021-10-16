@@ -11,6 +11,7 @@ import Videos from "./pages/Videos/Videos";
 import loadingGif from "./assets/load.gif"
 import Embeded from "./pages/Embeded/Embeded";
 import SideBar from "./components/SideBar/SideBar";
+import NotFound from "./pages/NotFound/NotFound";
 
 interface ICustomRoute extends RouteProps {
   isPrivate?: boolean;
@@ -53,6 +54,7 @@ function App() {
           <CustomRoute path="/login" component={Login} />
           <CustomRoute path="/register" component={Register} />
           <CustomRoute path="/embeded" component={Embeded} />
+          <CustomRoute path="/not-found" component={NotFound} />
           <Platform>
             <SideBar />
             <CustomRoute isPrivate path="/videos" component={Videos} />

@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "tsc",
-    "prestart": "npx prisma migrate dev",
+    "build": "tsc & prisma generate",
     "start": "node dist/server.js",
     "dev": "nodemon src/server.ts"
   },

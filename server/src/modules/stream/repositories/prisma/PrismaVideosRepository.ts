@@ -17,7 +17,7 @@ class PrismaVideosRepository implements IVideosRepository {
   }
 
   async findById(id: string): Promise<Video | null> {
-    const video = await prisma.video.findFirst({
+    const video = await prisma.video.findUnique({
       where: {
         id,
       },

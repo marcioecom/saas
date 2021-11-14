@@ -17,7 +17,7 @@ class CreateVideoController {
 
       return res.json(video);
     } catch (error) {
-      return console.log(error);
+      return res.json(error);
     }
   }
 }

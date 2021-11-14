@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MdFileUpload } from "react-icons/md"
+import SideBar from '../../components/SideBar/SideBar';
 import { useAuth } from '../../hooks/useAuth';
 import api from '../../services/api';
 
@@ -30,7 +31,8 @@ const Videos = () => {
   }, [setAuthenticated])
 
   return (
-    <>
+    <div style={{ display: 'flex' }}>
+      <SideBar />
       <div className="videos-content">
         <h2>Videos</h2>
         <div className="videos-main">
@@ -53,7 +55,7 @@ const Videos = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

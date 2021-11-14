@@ -10,7 +10,6 @@ import Videos from "./pages/Videos/Videos";
 
 import loadingGif from "./assets/load.gif"
 import Embeded from "./pages/Embeded/Embeded";
-import SideBar from "./components/SideBar/SideBar";
 import NotFound from "./pages/NotFound/NotFound";
 
 interface ICustomRoute extends RouteProps {
@@ -39,13 +38,6 @@ function CustomRoute({ isPrivate, ...rest }: ICustomRoute) {
   return <Route {...rest} />
 }
 
-const Platform: React.FunctionComponent = ({ children }) => {
-  return (
-    <div style={{ display: "flex" }}>
-      { children }
-    </div>)
-}
-
 function App() {
   return (
     <AuthProvider>
@@ -53,12 +45,9 @@ function App() {
         <Switch>
           <CustomRoute path="/login" component={Login} />
           <CustomRoute path="/register" component={Register} />
-          <CustomRoute path="/embeded" component={Embeded} />
-          <CustomRoute path="/not-found" component={NotFound} />
-          <Platform>
-            <SideBar />
-            <CustomRoute isPrivate path="/videos" component={Videos} />
-          </Platform>
+          <CustomRoute path="/embeded/:videoId" component={Embeded} />
+          <CustomRoute isPrivate path="/videos" component={Videos} />
+          <CustomRoute component={NotFound} />
         </Switch>
       </Router>
     </AuthProvider>

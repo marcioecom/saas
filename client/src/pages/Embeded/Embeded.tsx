@@ -7,10 +7,9 @@ interface IEmbededParams {
 }
 
 const Embeded = () => {
-  // const [videoUrl, setVideoUrl] = useState('#')
   const baseUrl = process.env.REACT_APP_APP_URL
   const { videoId } = useParams<IEmbededParams>()
-
+  
   const videoSource = `${baseUrl}/stream/${videoId}`
   return (
     <>

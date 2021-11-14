@@ -48,6 +48,34 @@
   margin-right: 10px;
 }
 
+.files-preview {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.videos-table {
+  background-color: #f9fafb;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.videos-table thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-bottom: 0.5px solid #d2d6dc;
+}
+
+.videos-table td, .videos-table th {
+  padding: 15px;
+  text-align: start;
+  border-bottom: 0.5px solid #d2d6dc;
+}
+
+.videos-table th {
+  color: #6b7280;
+  font-weight: normal;
+}
+
 @media (max-width: 600px) {
   .videos-content {
     max-width: 100%;

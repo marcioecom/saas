@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
-import { MdFileUpload } from "react-icons/md"
+import { ReactNode, useEffect, useState } from 'react';
+import { MdFileUpload } from "react-icons/md";
+import filesize from "filesize";
+
 import SideBar from '../../components/SideBar/SideBar';
 import { useAuth } from '../../hooks/useAuth';
 import api from '../../services/api';
@@ -7,9 +9,12 @@ import api from '../../services/api';
 import "./videos.css"
 
 interface IVideo {
-  id: number;
+  id: string;
+  key: string;
   name: string;
-  website: string;
+  size: number;
+  url: string;
+  created_at: string;
 }
 
 const Videos = () => {
@@ -30,13 +35,31 @@ const Videos = () => {
     })()
   }, [setAuthenticated])
 
+  const showVideos = (): ReactNode => {
+    const videosElement = videos.map((video: IVideo) => (
+      <tr key={video.id}>
+        <td>{video.name}</td>
+        <td>
+          <a href={video.url}>Link</a>
+        </td>
+        <td>{filesize(video.size)}</td>
+        <td>
+          {new Date(Date.parse(video.created_at)).toLocaleDateString()}
+        </td>
+      </tr>
+    ))
+    return videosElement;
+  }
+
   return (
     <div style={{ display: 'flex' }}>
       <SideBar />
       <div className="videos-content">
         <h2>Videos</h2>
+
         <div className="videos-main">
           <p className="text-center-upload">Faça o envio dos seus videos</p>
+
           <div className="upload-container">
             <label className="custom-file-upload">
               <input type="file" name="file" />
@@ -44,14 +67,22 @@ const Videos = () => {
               Escolher arquivo
             </label>
           </div>
+
           <div className="files-preview">
-            <ul>
-              {videos.map((video: IVideo) => (
-                <li key={video.id}>
-                  {video.name} (video.website)
-                </li>
-              ))}
-            </ul>
+            <table className="videos-table">
+              <thead>
+                <tr>
+                  <th>Nome do Arquivo</th>
+                  <th>Url do s3</th>
+                  <th>Tamanho</th>
+                  <th>Data de envio</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                { showVideos() }
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

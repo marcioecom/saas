@@ -27,6 +27,14 @@ class PrismaVideosRepository implements IVideosRepository {
 
     return video;
   }
+
+  async showVideos() {
+    const videos = await prisma.video.findMany();
+
+    if (!videos) return null;
+
+    return videos;
+  }
 }
 
 export { PrismaVideosRepository };

@@ -2,7 +2,7 @@ import { PrismaVideosRepository } from "../../repositories/prisma/PrismaVideosRe
 import { StreamVideo } from "./StreamVideo";
 import { StreamVideoController } from "./StreamVideoController";
 
-export const StreamVideoFactory = () => {
+export const streamVideoFactory = () => {
   const videosRepository = new PrismaVideosRepository();
   const streamVideo = new StreamVideo(videosRepository);
   const streamVideoController = new StreamVideoController(streamVideo);

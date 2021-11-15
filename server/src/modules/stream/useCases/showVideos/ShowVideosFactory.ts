@@ -2,7 +2,7 @@ import { PrismaVideosRepository } from "../../repositories/prisma/PrismaVideosRe
 import { ShowVideos } from "./ShowVideos";
 import { ShowVideosController } from "./ShowVideosController";
 
-export const ShowVideosFactory = () => {
+export const showVideosFactory = () => {
   const videosRepository = new PrismaVideosRepository();
   const showVideos = new ShowVideos(videosRepository);
   const showVideosController = new ShowVideosController(showVideos);

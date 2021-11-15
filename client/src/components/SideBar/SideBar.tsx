@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { MdDashboard, MdOndemandVideo, MdSmsFailed } from "react-icons/md"
+import { MdHome, MdOndemandVideo, MdSmsFailed } from "react-icons/md"
 
 import logo from "../../assets/images/play512.png"
 import "./sidebar.css"
@@ -8,7 +8,7 @@ const SideBar = () => {
   const pages = [
     {
       name: "Dashboard",
-      icon: <MdDashboard color="white" />,
+      icon: <MdHome color="white" />,
       link: "/dashboard"
     },
     {

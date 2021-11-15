@@ -61,7 +61,7 @@
   background-color: #161E2E;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
   .sidebar-container {
     display: none;
   }

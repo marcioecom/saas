@@ -16,7 +16,6 @@
 
 .menu svg {
   margin-right: 5px;
-  transform: translateY(-1px);
 }
 
 .menu::-webkit-details-marker {

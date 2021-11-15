@@ -39,9 +39,9 @@ const NavBar = () => {
           <MdMenu
             fontSize="1.7rem"
           />
-          <span>
+          {/* <span>
             Menu
-          </span>
+          </span> */}
         </summary>
         <div className="dropdown-wrapper">
           {pages.map((page, key) => (

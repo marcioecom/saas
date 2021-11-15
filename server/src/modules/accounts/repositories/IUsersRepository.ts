@@ -5,4 +5,5 @@ export interface IUsersRepository {
   create(user: User): Promise<User>;
   exists(email: string): Promise<boolean>;
   findByEmail(email: string): Promise<User | null>;
+  findById(id: string): Promise<User | null>;
 }

@@ -3,6 +3,7 @@ import { MdFileUpload } from "react-icons/md";
 import filesize from "filesize";
 
 import SideBar from '../../components/SideBar/SideBar';
+import NavBar from '../../components/NavBar';
 import { useAuth } from '../../hooks/useAuth';
 import api from '../../services/api';
 
@@ -40,7 +41,9 @@ const Videos = () => {
       <tr key={video.id}>
         <td>{video.name}</td>
         <td>
-          <a href={video.url}>Link</a>
+          <a href={`/embeded/${video.id}`}>
+            Ver Player
+          </a>
         </td>
         <td>{filesize(video.size)}</td>
         <td>
@@ -52,7 +55,8 @@ const Videos = () => {
   }
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div className="page">
+      <NavBar />
       <SideBar />
       <div className="videos-content">
         <h2>Videos</h2>
@@ -73,7 +77,7 @@ const Videos = () => {
               <thead>
                 <tr>
                   <th>Nome do Arquivo</th>
-                  <th>Url do s3</th>
+                  <th>Embeded</th>
                   <th>Tamanho</th>
                   <th>Data de envio</th>
                 </tr>

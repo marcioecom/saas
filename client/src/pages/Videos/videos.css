@@ -1,5 +1,6 @@
 .page {
   display: flex;
+  max-width: 100vw;
 }
 
 .videos-content {
@@ -51,6 +52,7 @@
 .files-preview {
   margin-top: 50px;
   width: 100%;
+  overflow: auto;
 }
 
 .videos-table {
@@ -76,8 +78,13 @@
   font-weight: normal;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
+  .page {
+    flex-direction: column;
+  }
+
   .videos-content {
-    max-width: 100%;
+    max-width: 90%;
+    padding: 10px;
   }
 }

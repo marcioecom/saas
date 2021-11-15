@@ -3,6 +3,7 @@ import { Router, Switch, Route, Redirect, RouteProps } from "react-router-dom"
 import history from "./services/history"
 import { useAuth } from "./hooks/useAuth";
 import { AuthProvider } from "./contexts/AuthContext";
+import { FileProvider } from "./contexts/FilesContext";
 
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
@@ -41,6 +42,7 @@ function CustomRoute({ isPrivate, ...rest }: ICustomRoute) {
 function App() {
   return (
     <AuthProvider>
+      <FileProvider>
       <Router history={history}>
         <Switch>
           <CustomRoute path="/login" component={Login} />
@@ -50,6 +52,7 @@ function App() {
           <CustomRoute component={NotFound} />
         </Switch>
       </Router>
+      </FileProvider>
     </AuthProvider>
   );
 }

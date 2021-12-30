@@ -15,6 +15,7 @@
     "@types/uuid": "^8.3.1",
     "axios": "^0.21.4",
     "filesize": "^8.0.6",
+    "plyr": "^3.6.12",
     "react": "^17.0.2",
     "react-circular-progressbar": "^2.0.4",
     "react-dom": "^17.0.2",

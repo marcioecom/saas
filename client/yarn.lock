@@ -8198,7 +8198,14 @@ pkg-up@3.1.0:
   dependencies:
     find-up "^3.0.0"
 
-plyr@^3.6.12:
+plyr-react@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/plyr-react/-/plyr-react-3.2.1.tgz#ad295be10a60527844b03432dffe40a23f8e0c39"
+  integrity sha512-ZXMA+d837mZCkb68oTXso6rH8O+B2+A7t8ux1fdU+kFSUh1NZa1/iuItItFgScmVC6FoO3DNj+FkZP2aikxoKg==
+  dependencies:
+    plyr "^3.6.8"
+
+plyr@^3.6.8:
   version "3.6.12"
   resolved "https://registry.yarnpkg.com/plyr/-/plyr-3.6.12.tgz#e64481f163f9188d783447aedbf424fefd2ee92f"
   integrity sha512-42WhYpMS/FEyX2unSEvhYtj1RvJgWvOsjZQFDongOQHA4eVzsyr7b06bzVpinMAOVC9e5H7RCbK+6CCAFIl2VQ==

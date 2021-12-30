@@ -3,6 +3,8 @@ import { MdMenu, MdHome, MdOndemandVideo, MdSmsFailed } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
+import logo from "../../assets/images/play512.png"
+
 import './style.css'
 
 const NavBar = () => {
@@ -33,33 +35,46 @@ const NavBar = () => {
   }, []);
 
   return (
-    <div className="navbar">
-      <details>
-        <summary className="menu">
-          <MdMenu
-            fontSize="1.7rem"
-          />
-        </summary>
-        <div className="dropdown-wrapper">
-          {pages.map((page, key) => (
-            <Link
-              key={key}
-              className="navbar-link"
-              to={page.link}
-            >
-              <div className="navbar-line">
-                {page.icon}
-                {page.name}
-              </div>
-            </Link>
-          ))}
+    <>
+      <header className="header-dashboard">
+        <div className="header-logo">
+          <img src={logo} alt="VClick Logo" />
+          <p>VClick</p>
         </div>
-      </details>
+        <div className="profile">
+          Olá, {name}
+        </div>
+      </header>
+    
+      {/* Mobile Version */}
+      <div className="navbar">
+        <details>
+          <summary className="menu">
+            <MdMenu
+              fontSize="1.7rem"
+            />
+          </summary>
+          <div className="dropdown-wrapper">
+            {pages.map((page, key) => (
+              <Link
+                key={key}
+                className="navbar-link"
+                to={page.link}
+              >
+                <div className="navbar-line">
+                  {page.icon}
+                  {page.name}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </details>
 
-      <div className="profile">
-        Olá, { name }
+        <div className="profile">
+          Olá, { name }
+        </div>
       </div>
-    </div>
+    </>
   );
 }
  

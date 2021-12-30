@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import { MdHome, MdOndemandVideo, MdSmsFailed } from "react-icons/md"
 
-import logo from "../../assets/images/play512.png"
 import "./sidebar.css"
 
 const SideBar = () => {

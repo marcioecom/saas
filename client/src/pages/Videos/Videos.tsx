@@ -8,8 +8,6 @@ import api from '../../services/api';
 
 import SideBar from '../../components/SideBar/SideBar';
 import NavBar from '../../components/NavBar';
-import logo from "../../assets/images/play512.png"
-
 
 import "./videos.css"
 
@@ -23,7 +21,6 @@ interface IVideo {
 }
 
 const Videos = () => {
-  const [name, setName] = useState('');
   // const { handleUpload } = useFiles()
   const { setAuthenticated } = useAuth()
   const [videos, setVideos] = useState([])
@@ -41,13 +38,6 @@ const Videos = () => {
       }
     })()
   }, [setAuthenticated])
-
-  useEffect(() => {
-    (async () => {
-      const { data } = await api.get("/profile")
-      setName(data.name)
-    })()
-  }, []);
 
   const showVideos = (): ReactNode => {
     const videosElement = videos.map((video: IVideo) => (
@@ -70,15 +60,6 @@ const Videos = () => {
   return (
     <div className="page">
       <NavBar />
-      <header className="header-dashboard">
-        <div className="header-logo">
-          <img src={logo} alt="VClick Logo" />
-          <p>VClick</p>
-        </div>
-        <div className="profile">
-          Olá, {name}
-        </div>
-      </header>
       <div className="video-main-content">
         <SideBar />
         <div className="videos-content">

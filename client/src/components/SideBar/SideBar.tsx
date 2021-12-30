@@ -26,12 +26,6 @@ const SideBar = () => {
   return (
     <>
       <div className="sidebar-container">
-        <header className="side-header">
-          <div className="sidebar-title">
-            <img src={logo} alt="VClick Logo" />
-            <p>VClick</p>
-          </div>
-        </header>
         <nav className="sidebar-nav">
           {pages.map((page, key) => (
             <Link

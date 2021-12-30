@@ -1,6 +1,30 @@
 .page {
-  display: flex;
   max-width: 100vw;
+}
+
+.header-dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #057A55;
+  color: #fff;
+  padding: 0 15px;
+  font-size: 1.2rem;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo img {
+  width: 1.7rem;
+  margin-right: 5px;
+}
+
+.video-main-content {
+  display: flex;
+  height: calc(100vh - 60px);
 }
 
 .videos-content {
@@ -86,5 +110,9 @@
   .videos-content {
     max-width: 90%;
     padding: 10px;
+  }
+
+  .header-dashboard {
+    display: none;
   }
 }

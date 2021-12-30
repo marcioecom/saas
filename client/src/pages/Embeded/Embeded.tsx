@@ -27,8 +27,7 @@ const Embeded = () => {
               'play-large',
               'rewind',
               'play',
-              'volume',
-              'fullscreen'
+              'fullscreen',
             ]}}
         />
       </div>

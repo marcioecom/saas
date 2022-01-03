@@ -28,6 +28,18 @@ class PrismaVideosRepository implements IVideosRepository {
     return video;
   }
 
+  async deleteById(id: string) {
+    const video = await prisma.video.delete({
+      where: {
+        id,
+      },
+    });
+
+    if (!video) return null;
+
+    return video;
+  }
+
   async showVideos() {
     const videos = await prisma.video.findMany();
 

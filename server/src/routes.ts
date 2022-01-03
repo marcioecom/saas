@@ -10,6 +10,7 @@ import { getProfileFactory } from "./modules/accounts/useCases/getProfile/GetPro
 import { showVideosFactory } from "./modules/stream/useCases/showVideos/ShowVideosFactory";
 import { createVideoFactory } from "./modules/stream/useCases/createVideo/CreateVideoFactory";
 import { streamVideoFactory } from "./modules/stream/useCases/streamVideo/StreamVideoFactory";
+import { deleteVideoFactory } from "./modules/stream/useCases/deleteVideo/DeleteVideoFactory";
 
 const router = Router();
 
@@ -37,6 +38,10 @@ router.get("/videos", ensureAuthenticated, (req, res) => {
 
 router.post("/videos", multer(upload).single("file"), (req, res) => {
   createVideoFactory().handle(req, res);
+});
+
+router.delete("/videos/:id", (req, res) => {
+  deleteVideoFactory().handle(req, res);
 });
 
 router.get("/stream/:id", (req, res) => {

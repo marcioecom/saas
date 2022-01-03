@@ -102,8 +102,9 @@ const FileProvider: React.FC = ({ children }) => {
 
           updateFile(uploadedFile.id, {
             uploaded: true,
-            id: response.data._id,
+            id: response.data.id,
             url: response.data.url,
+            created_at: response.data.created_at
           });
         })
         .catch((err) => {

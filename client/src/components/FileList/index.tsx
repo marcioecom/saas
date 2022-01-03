@@ -21,7 +21,7 @@ const FileList = () => {
           </td>
           <td>{video.readableSize}</td>
           <td>
-            {new Date(Date.parse(video.created_at)).toLocaleDateString()}
+            {video.created_at && new Date(Date.parse(video.created_at)).toLocaleDateString()}
           </td>
           <td>
             {!video.uploaded && !video.error && (

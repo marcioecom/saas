@@ -41,6 +41,7 @@ const FileList = () => {
                 onClick={(e) => deleteFile(video.id)}
               >
                 <BiTrash
+                  color="#e33"
                   size={24}
                 />
               </button>

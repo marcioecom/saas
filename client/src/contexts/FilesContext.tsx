@@ -88,18 +88,10 @@ const FileProvider: React.FC = ({ children }) => {
               (progressEvent.loaded * 100) / progressEvent.total
             );
 
-            console.log(
-              `A imagem ${uploadedFile.name} está ${progress}% carregada... `
-            );
-
             updateFile(uploadedFile.id, { progress });
           },
         })
         .then((response) => {
-          console.log(
-            `A imagem ${uploadedFile.name} já foi enviada para o servidor!`
-          );
-
           updateFile(uploadedFile.id, {
             uploaded: true,
             id: response.data.id,

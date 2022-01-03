@@ -15,6 +15,7 @@ export interface IPost {
   size: number;
   key: string;
   url: string;
+  created_at: string;
 }
 
 export interface IFile {
@@ -27,8 +28,8 @@ export interface IFile {
   progress?: number;
   error?: boolean;
   url: string;
+  created_at: string;
 }
-
 interface IFileContextData {
   uploadedFiles: IFile[];
   deleteFile(id: string): void;
@@ -53,6 +54,7 @@ const FileProvider: React.FC = ({ children }) => {
           file: null,
           error: false,
           uploaded: true,
+          created_at: post.created_at
         };
       });
 
@@ -87,7 +89,7 @@ const FileProvider: React.FC = ({ children }) => {
             );
 
             console.log(
-              `A imagem ${uploadedFile.name} est√° ${progress}% carregada... `
+              `A imagem ${uploadedFile.name} está ${progress}% carregada... `
             );
 
             updateFile(uploadedFile.id, { progress });
@@ -95,7 +97,7 @@ const FileProvider: React.FC = ({ children }) => {
         })
         .then((response) => {
           console.log(
-            `A imagem ${uploadedFile.name} j√° foi enviada para o servidor!`
+            `A imagem ${uploadedFile.name} já foi enviada para o servidor!`
           );
 
           updateFile(uploadedFile.id, {
@@ -130,6 +132,7 @@ const FileProvider: React.FC = ({ children }) => {
         uploaded: false,
         error: false,
         url: "",
+        created_at: ""
       }));
 
       // concat é mais performático que ...spread

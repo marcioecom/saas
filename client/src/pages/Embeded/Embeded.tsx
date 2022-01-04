@@ -1,17 +1,23 @@
-import React, { useRef } from 'react';
-// import { useParams } from 'react-router';
+import React, { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router';
 import Plyr, { APITypes } from 'plyr-react';
+import api from '../../services/api';
 
-// interface IEmbededParams {
-//   videoId: string;
-// }
+interface IEmbededParams {
+  videoId: string;
+}
 
 const Embeded = () => {
   const ref = useRef<APITypes>(null)
-  // const { videoId } = useParams<IEmbededParams>()
-  // const baseUrl = process.env.REACT_APP_APP_URL
-  // const videoSource = `${baseUrl}/stream/${videoId}`
-  const videoSource = "https://vclick-raw-videos.s3.us-east-2.amazonaws.com/17c8a8acc751a1792d100a9df905dc51-video.mp4"
+  const [videoUrl, setVideoUrl] = useState('')
+  const { videoId } = useParams<IEmbededParams>()
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await api.get(`/stream/${videoId}`)
+      setVideoUrl(data.url)
+    })()
+  }, [videoId])
 
   return (
     <>
@@ -20,7 +26,7 @@ const Embeded = () => {
           ref={ref}
           source={{
             type: "video",
-            sources: [{ src: videoSource }]
+            sources: [{ src: videoUrl }]
           }}
           options={{
             controls: [
